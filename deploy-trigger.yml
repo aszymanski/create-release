@@ -1,0 +1,16 @@
+name: Deployment
+
+on:
+  release:
+    types: [created]
+
+
+jobs:
+  Show-Release-Info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show Release Info
+        run: |
+          echo "RELEASE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          echo "RELEASE_ID=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
+          echo "RELEASE_UPLOAD_URL=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
